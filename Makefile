@@ -69,41 +69,47 @@ COMMON=Errors.v AST.v Linking.v \
 # Back-end modules (in backend/, $(ARCH)/)
 
 BACKEND=\
-  Cminor.v Cminortyping.v Op.v CminorSel.v \
-  SelectOp.v SelectDiv.v SplitLong.v SelectLong.v Selection.v \
-  SelectOpproof.v SelectDivproof.v SplitLongproof.v \
-  SelectLongproof.v Selectionproof.v \
-  Registers.v RTL.v \
-  RTLgen.v RTLgenspec.v RTLgenproof.v \
-  Tailcall.v Tailcallproof.v \
-  Inlining.v Inliningspec.v Inliningproof.v \
-  Renumber.v Renumberproof.v \
-  RTLtyping.v \
-  Kildall.v Liveness.v \
-  ValueDomain.v ValueAOp.v ValueAnalysis.v \
-  ConstpropOp.v Constprop.v ConstpropOpproof.v Constpropproof.v \
-  CSEdomain.v CombineOp.v CSE.v CombineOpproof.v CSEproof.v \
-  NeedDomain.v NeedOp.v Deadcode.v Deadcodeproof.v \
-  Unusedglob.v Unusedglobproof.v \
-  Machregs.v Locations.v Conventions1.v Conventions.v LTL.v \
-  Allocation.v Allocproof.v \
-  Tunneling.v Tunnelingproof.v \
-  Linear.v Lineartyping.v \
-  Linearize.v Linearizeproof.v \
-  CleanupLabels.v CleanupLabelsproof.v \
-  Debugvar.v Debugvarproof.v \
-  Mach.v \
-  Bounds.v Stacklayout.v Stacking.v Stackingproof.v \
-  Asm.v Asmgen.v Asmgenproof0.v Asmgenproof1.v Asmgenproof.v
+  Cminor.v
+
+# BACKEND=\
+#   Cminor.v Cminortyping.v Op.v CminorSel.v \
+#   SelectOp.v SelectDiv.v SplitLong.v SelectLong.v Selection.v \
+#   SelectOpproof.v SelectDivproof.v SplitLongproof.v \
+#   SelectLongproof.v Selectionproof.v \
+#   Registers.v RTL.v \
+#   RTLgen.v RTLgenspec.v RTLgenproof.v \
+#   Tailcall.v Tailcallproof.v \
+#   Inlining.v Inliningspec.v Inliningproof.v \
+#   Renumber.v Renumberproof.v \
+#   RTLtyping.v \
+#   Kildall.v Liveness.v \
+#   ValueDomain.v ValueAOp.v ValueAnalysis.v \
+#   ConstpropOp.v Constprop.v ConstpropOpproof.v Constpropproof.v \
+#   CSEdomain.v CombineOp.v CSE.v CombineOpproof.v CSEproof.v \
+#   NeedDomain.v NeedOp.v Deadcode.v Deadcodeproof.v \
+#   Unusedglob.v Unusedglobproof.v \
+#   Machregs.v Locations.v Conventions1.v Conventions.v LTL.v \
+#   Allocation.v Allocproof.v \
+#   Tunneling.v Tunnelingproof.v \
+#   Linear.v Lineartyping.v \
+#   Linearize.v Linearizeproof.v \
+#   CleanupLabels.v CleanupLabelsproof.v \
+#   Debugvar.v Debugvarproof.v \
+#   Mach.v \
+#   Bounds.v Stacklayout.v Stacking.v Stackingproof.v \
+#   Asm.v Asmgen.v Asmgenproof0.v Asmgenproof1.v Asmgenproof.v
 
 # C front-end modules (in cfrontend/)
 
-CFRONTEND=Ctypes.v Cop.v Csyntax.v Csem.v Ctyping.v Cstrategy.v Cexec.v \
-  Initializers.v Initializersproof.v \
-  SimplExpr.v SimplExprspec.v SimplExprproof.v \
-  Clight.v ClightBigstep.v SimplLocals.v SimplLocalsproof.v \
-  Cshmgen.v Cshmgenproof.v \
-  Csharpminor.v Cminorgen.v Cminorgenproof.v
+CFRONTEND=Ctypes.v Cop.v Csyntax.v Csem.v Ctyping.v Cstrategy.v \
+  Clight.v ClightBigstep.v
+
+# CFRONTEND=Ctypes.v Cop.v Csyntax.v Csem.v Ctyping.v Cstrategy.v Cexec.v \
+#   Initializers.v Initializersproof.v \
+#   SimplExpr.v SimplExprspec.v SimplExprproof.v \
+#   Clight.v ClightBigstep.v SimplLocals.v SimplLocalsproof.v \
+#   Cshmgen.v Cshmgenproof.v \
+#   Csharpminor.v Cminorgen.v Cminorgenproof.v
 
 # Parser
 
@@ -117,7 +123,9 @@ MENHIRLIB=Alphabet.v Automaton.v Grammar.v Interpreter_complete.v \
 
 # Putting everything together (in driver/)
 
-DRIVER=Compopts.v Compiler.v Complements.v
+DRIVER=\
+
+# DRIVER=Compopts.v Compiler.v Complements.v
 
 # All source files
 
@@ -127,9 +135,12 @@ FILES=$(VLIB) $(COMMON) $(BACKEND) $(CFRONTEND) $(DRIVER) $(FLOCQ) \
 # Generated source files
 
 GENERATED=\
-  $(ARCH)/ConstpropOp.v $(ARCH)/SelectOp.v $(ARCH)/SelectLong.v \
-  backend/SelectDiv.v backend/SplitLong.v \
   cparser/Parser.v
+
+# GENERATED=\
+#   $(ARCH)/ConstpropOp.v $(ARCH)/SelectOp.v $(ARCH)/SelectLong.v \
+#   backend/SelectDiv.v backend/SplitLong.v \
+#   cparser/Parser.v
 
 all:
 	@test -f .depend || $(MAKE) depend
