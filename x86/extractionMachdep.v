@@ -15,15 +15,14 @@
 
 (* Additional extraction directives specific to the x86-64 port *)
 
-Require SelectOp ConstpropOp.
+(* Require SelectOp ConstpropOp. *)
 
-(* SelectOp *)
+(* (* SelectOp *) *)
 
-Extract Constant SelectOp.symbol_is_external =>
-  "fun id -> Configuration.system = ""macosx"" && C2C.atom_is_extern id".
+(* Extract Constant SelectOp.symbol_is_external => *)
+(*   "fun id -> Configuration.system = ""macosx"" && C2C.atom_is_extern id". *)
 
-(* ConstpropOp *)
+(* (* ConstpropOp *) *)
 
-Extract Constant ConstpropOp.symbol_is_external =>
-  "fun id -> Configuration.system = ""macosx"" && C2C.atom_is_extern id".
-
+(* Extract Constant ConstpropOp.symbol_is_external => *)
+(*   "fun id -> Configuration.system = ""macosx"" && C2C.atom_is_extern id". *)
